@@ -1,0 +1,33 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+<body class="bg-dark">
+    <div>
+        <center>
+            <div class="">
+                <div class="card mt-3" style=" width: 25rem;">
+                    <img src="{{url_for('static', filename = 'logo.jpg')}}" class=" card-img-tp" srcset="">
+                    <div class="card-body bg-dark">
+                        <form action="{{url_for('login_user')}}" method='POST'>
+                            <!-- <h1 class="card-title text-white">Iniciar Sesion</h1> -->
+                            <label class="text-white">Ingrese su Carnet de Identidad: </label>
+                            <input class="form-control my-2" type="text" name="ci" placeholder="Carnet de Identidad">
+                            <label class="text-white">Ingrese su Contraseña: </label>
+                            <input class="form-control mt-2" type="password" name="password" placeholder="Contraseña">
+                            <div class="d-grip gap-2">
+                                <button class="btn btn-success mt-3" type="submit">
+                                    Iniciar Sesion
+                                </button>
+
+                                <div class="text-white mt-2">
+                                    No tienes cuenta? Registrese
+                                    <a class="" href="/to_add_emp">aqui</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </center>
+    </div>
+</body>
