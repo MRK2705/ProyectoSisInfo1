@@ -1,15 +1,25 @@
-from tkinter import *
-from tkinter import messagebox as MessageBox
+# from tkinter import * 
+# from tkinter import messagebox as MessageBox
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask.wrappers import Request
 from flask_mysqldb import MySQL
+import sys
+#Clases
+sys.path.append(".")
 
-app = Flask(__name__)
+from model.empleado import Empleado
+from model.recepcionista import Recepcionista 
+from model.producto import Producto
+from model.proveedor import Proveedor
+
+app = Flask(__name__, template_folder="../view/templates", static_folder="../view/static")
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'pizzeria'
 mysql = MySQL(app)
+
+
 
 @app.route('/inicio')
 def Index():
@@ -23,17 +33,18 @@ def to_add_emp():
 
 @app.route('/add_emp', methods=['POST'])
 def add_emp():
-    if request.method == 'POST':
-        ci = request.form['ci']
-        nombre = request.form['nombre']
-        fono = request.form['fono']
-        password = request.form['password']
-        cur = mysql.connection.cursor()
-        cur.execute("insert into empleado (ci,nombre,fono,password) values (%s, %s, %s, %s)",
-                    (ci, nombre, fono, password))
-        mysql.connection.commit()
+     if request.method == 'POST':
+         empleado = Empleado(request.form['ci'],request.form['nombre'],request.form['fono'],request.form['password'])
+         # ci = request.form['ci']
+         # nombre = request.form['nombre']
+         # fono = request.form['fono']
+         # password = request.form['password']
+         cur = mysql.connection.cursor()
+         cur.execute("insert into empleado (ci,nombre,fono,password) values (%s, %s, %s, %s)",
+                     (empleado.c, empleado.n, empleado.f, empleado.p))
+         mysql.connection.commit()
 
-        return 'recibido'
+         return 'recibido'
 
 
 @app.route('/')
@@ -44,21 +55,18 @@ def login():
 @app.route('/login_user', methods=['POST'])
 def login_user():
     if request.method == 'POST':
-        ci = request.form['ci']
-        password = request.form['password']
+        recepcionista = Recepcionista(request.form['ci'],request.form['password'])
+       # ci = request.form['ci']
+       # password = request.form['password']
         cur = mysql.connection.cursor()
         cur.execute(
-            "select * from empleado where ci=%s and password=%s", (ci, password))
+            "select * from empleado where ci=%s and password=%s", (recepcionista.ci, recepcionista.ps))
         dato = cur.fetchall()
         mysql.connection.commit()
 
         if dato:
             return redirect(url_for("Index"))
         else:
-
-            MessageBox.showwarning(
-                "Alerta!", "Usuario o contraseña incorrectos")
-
             return render_template('login.html')
 
 
@@ -70,6 +78,7 @@ def to_add_prod():
 @app.route('/add_prod', methods=['POST'])
 def add_prod():
     if request.method == 'POST':
+        producto = Producto(request.form['nombre'],request.form['cantidad'],request.form['precio_u'],request.form['tipo'])
         # idProducto = request.form['idProducto']
         nombre = request.form['nombre']
         cantidad = request.form['cantidad']
@@ -77,7 +86,7 @@ def add_prod():
         tipo = request.form['tipo']
         cur = mysql.connection.cursor()
         cur.execute("insert into producto (nombre,cantidad,precio_u,tipo) values (%s, %s, %s,%s)",
-                    (nombre, cantidad, precio_u, tipo))
+                    (producto.n, producto.c, producto.pu, producto.t))
         mysql.connection.commit()
 
         return render_template("index.html")
@@ -175,6 +184,24 @@ def delete1():
 def to_platillos():
     return render_template("platillos.html")
 
+
+@ app.route('/to_add_prove')
+def to_add_prove():
+    return render_template("añadirproveedor.html")
+
+@app.route('/add_prove', methods=['POST'])
+def add_prove():
+    if request.method == 'POST':
+        proveedor = Proveedor(0,request.form['nombre'],request.form['fono'])
+        # idProducto = request.form['idProducto']
+        #nombre = request.form['nombre']
+        #fono = request.form['fono']
+        cur = mysql.connection.cursor()
+        cur.execute("insert into proveedor (nombre,fono) values (%s, %s)",
+                    (proveedor.nombre, proveedor.fono))
+        mysql.connection.commit()
+
+        return render_template("index.html")
 
 if __name__ == '__main__':
     app.run(port = 3000, debug = True)

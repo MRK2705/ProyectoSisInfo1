@@ -7,7 +7,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Restaurant Pizzeria Don Carleone</a>
-        <form class="row g-3 needs-validation" action="{{url_for('to_productos')}}" method='POST' novalidate></form>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -24,12 +23,16 @@
                     <a class="nav-link" href="/to_add_prod">Añadir Producto</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/to_registro_ventas">Registro de Ventas</a>
-                </li>
+                  <a class="nav-link" href="/to_add_prove">Añadir Proveedor</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/to_registro_ventas">Registro de Ventas</a>
+            </li>
+    
             </ul>
         </div>
     </div>
-</nav>
+    </nav>
 
 <table class="table table-sm table-dark table-hover">
     <div class="container">
