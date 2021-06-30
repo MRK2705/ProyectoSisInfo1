@@ -3,3 +3,5 @@ class Proveedor:
        self.idproveedor = id
        self.nombre = n
        self.fono = f
+    def getResumen(self):
+        return f"{self.idproveedor} - {self.nombre} - {self.fono} "

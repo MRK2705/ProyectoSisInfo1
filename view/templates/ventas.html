@@ -34,33 +34,43 @@
   <div class="position-absolute top-50 start-50 translate-middle">
 
     <div class="card bg-success p-5">
-      <h1 class="text-white">Hoja de Ventas</h1>
-      <form class="row g-3 needs-validation" novalidate>
-        <div class="col-md-6 position-relative">
+      <div class="row">
+        <div class="col-8">
+          <h1 class="text-white">Hoja de Ventas</h1>
+        </div>
+        <div class="col-4">
+
+          <button class="btn btn-danger">Hacer pedido</button>
+
+        </div>
+      </div>
+
+      <div class="row g-3 ">
+        <div class="col-10">
           <!-- <label for="validationTooltip02" class="form-label text-white">ID de compra:</label>
           <input type="text" class="form-control" id="validationTooltip02" value="" required>
           <div class="valid-tooltip">
             Looks good!
           </div> -->
           <span class="input-group-addon text-white">
-            Elige uno: 
+            Elige uno:
           </span>
           <select name="name_platillos" class="selectpicker form-control mt-2">
             {% for o in data %}
-            <option value="{{ o.id }}">{{o.resumen}}</option>
+            <option value="{{ o.id }}">{{o.getResumen()}}</option>
             {% endfor %}
           </select>
         </div>
         <div class="col-2 position-relative">
           <label for="validationTooltip02" class="form-label text-white">Cantidad:</label>
-          <input type="text" class="form-control" id="validationTooltip02" value="" required>
+          <input type="number" class="form-control" id="validationTooltip02" value="" required min=1>
           <div class="valid-tooltip">
             Looks good!
           </div>
         </div>
-        <div class="col-md-6 position-relative">
+        <!-- <div class="col-md-6 position-relative">
           <label for="validationTooltip02" class="form-label text-white">Fecha(AAAA-MM-DD):</label>
-          <input type="text" class="form-control" id="validationTooltip02" value="" required>
+          <input type="text" class="form-control" id="validationTooltip02" value="1" required > 
           <div class="valid-tooltip">
             Looks good!
           </div>
@@ -71,11 +81,13 @@
           <div class="valid-tooltip">
             Looks good!
           </div>
-        </div>
-        <div class="col-12">
-          <button class="btn btn-primary" type="submit">Hacer pedido</button>
-        </div>
-      </form>
+        </div> -->
+
+      </div>
+
+      <table>
+
+      </table>
 
     </div>
 

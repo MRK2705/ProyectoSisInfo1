@@ -1,43 +1,49 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-<div class="container-fluid">
-    <a class="navbar-brand" href="#">Restaurant Pizzeria Don Carleone</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/inicio">Inicio</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/to_add_emp">Añadir Empleado</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/to_add_prod">Añadir Producto</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/to_add_prove">Añadir Proveedor</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/to_registro_ventas">Registro de Ventas</a>
-        </li>
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-        </ul>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Restaurant Pizzeria Don Carleone</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/inicio">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/to_add_emp">Añadir Empleado</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/to_add_prod">Añadir Producto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/to_add_prove">Añadir Proveedor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/to_registro_ventas">Registro de Ventas</a>
+                </li>
+
+            </ul>
+        </div>
     </div>
-</div>
 </nav>
 
 
-<table class="table table-sm table-dark table-hover">
+<table class="table table-dark mr-2">
     <div class="container">
         <div class="well text-center">
             <h1>LISTA DE INGREDIENTES EN ALMACENES</h1>
         </div>
     </div>
-<div>
+    <div>
         <thead>
             <tr class="table-active">
                 <th>idProducto</th>
@@ -45,7 +51,8 @@ integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG
                 <th>Cantidad(kg)</th>
                 <th>Precio_Unitario</th>
                 <th>Tipo</th>
-                <th>Operación</th> 
+                <th>idProveedor</th>
+                <th>Operación</th>
             </tr>
         </thead>
         <tbody>
@@ -56,75 +63,83 @@ integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG
                 <td>{{producto.2}}</td>
                 <td>{{producto.3}}</td>
                 <td>{{producto.4}}</td>
+                <td>{{producto.5}}</td>
                 <td>
-                    <button type="button" onclick="fnModificarProducto('{{producto.0}}','{{producto.1}}','{{producto.2}}','{{producto.3}}','{{producto.4}}')" class="btn btn-warning btn-xs">Modificar</button>
-                    <button type="button" onclick="fnBorrarProducto('{{producto.0}}','{{producto.1}}','{{producto.2}}','{{producto.3}}','{{producto.4}}')" class="btn btn-danger btn-xs">Eliminar</button>
+                    <button type="button"
+                        onclick="fnModificarProducto('{{producto.0}}','{{producto.1}}','{{producto.2}}','{{producto.3}}','{{producto.4}}','{{producto.5}}')"
+                        class="btn btn-warning btn-xs">Modificar</button>
+                    <button type="button"
+                        onclick="fnBorrarProducto('{{producto.0}}','{{producto.1}}','{{producto.2}}','{{producto.3}}','{{producto.4}}','{{producto.5}}')"
+                        class="btn btn-danger btn-xs">Eliminar</button>
                 </td>
             </tr>
             {%endfor%}
         </tbody>
-    </table>
+</table>
 </div>
 
-    <script type="text/javascript">
+<script type="text/javascript">
 
-    function fnModificarProducto(idProducto,nombre,cantidad,precio_u,tipo)
-    {
+    function fnModificarProducto(idProducto, nombre, cantidad, precio_u, tipo, idproveedor) {
         $("#idProducto").val(idProducto)
         $("#idnombre").val(nombre)
         $("#idcantidad").val(cantidad)
         $("#idprecio_u").val(precio_u)
         $("#idtipo").val(tipo)
+        $("#idproveedor").val(idproveedor)
 
         $("#idBtnOperacion").html('Modificar');
         $("#idTituloDialogo").html('Modificar producto');
 
-        $("#idProducto").prop( "disabled" , true);
-        $("#idnombre").prop( "disabled" , false);
-        $("#idcantidad").prop( "disabled" , false);
-        $("#idprecio_u").prop( "disabled" , false);
-        $("#idtipo").prop( "disabled" , false);
+        $("#idProducto").prop("disabled", true);
+        $("#idnombre").prop("disabled", false);
+        $("#idcantidad").prop("disabled", false);
+        $("#idprecio_u").prop("disabled", false);
+        $("#idtipo").prop("disabled", false);
+        $("#idproveedor").prop("disabled", true);
 
-        $("#idFrmProductos").attr('action','{{url_for("update")}}');
+        $("#idFrmProductos").attr('action', '{{url_for("update")}}');
         $('#idDlgProductos').modal('show')
+        console.log("si entros");
     }
 
-    
-    function fnBorrarProducto(idProducto,nombre,cantidad,precio_u,tipo)
-    {
+
+    function fnBorrarProducto(idProducto, nombre, cantidad, precio_u, tipo, idproveedor) {
         $("#idProducto").val(idProducto)
         $("#idnombre").val(nombre)
         $("#idcantidad").val(cantidad)
         $("#idprecio_u").val(precio_u)
         $("#idtipo").val(tipo)
+        $("#idproveedor").val(idproveedor)
 
         $("#idBtnOperacion").html('Borrar');
         $("#idTituloDialogo").html('Borrar producto');
-        
-        $("#idProducto").prop( "disabled" , true);
-        $("#idnombre").prop( "disabled" , true);
-        $("#idcantidad").prop( "disabled" , true);
-        $("#idprecio_u").prop( "disabled" , true);
-        $("#idtipo").prop( "disabled" , true);
 
-        $("#idFrmProductos").attr('action','{{url_for("delete")}}');
+        $("#idProducto").prop("disabled", true);
+        $("#idnombre").prop("disabled", true);
+        $("#idcantidad").prop("disabled", true);
+        $("#idprecio_u").prop("disabled", true);
+        $("#idtipo").prop("disabled", true);
+        $("#idproveedor").prop("disabled", true);
+
+        $("#idFrmProductos").attr('action', '{{url_for("delete")}}');
         $('#idDlgProductos').modal('show')
     }
-    </script>
+</script>
 <div class="modal fade" id="idDlgProductos" role="dialog" data-bs-toggle="modal">
-    <div class="modal-dialog"> 
+    <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header"> 
-                <h5 class ="modal-title" id="idTituloDialogo"></h5>
+            <div class="modal-header">
+                <h5 class="modal-title" id="idTituloDialogo"></h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form action="" method="POST" id="idFrmProductos">
                     <div class="form-group">
                         <label>idProducto:</label>
-                        <input type="text" class="form-control" name="idProducto" id="idProducto" required="1">                  
+                        <input type="text" class="form-control" name="idProducto" id="idProducto" required="1">
                     </div>
                     <div class="form-group">
                         <label>Nombre:</label>
@@ -132,27 +147,30 @@ integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG
                     </div>
                     <div class="form-group">
                         <label>Cantidad:</label>
-                        <input type="text" class="form-control" name="cantidad" id="idcantidad" required="1">                  
+                        <input type="text" class="form-control" name="cantidad" id="idcantidad" required="1">
                     </div>
                     <div class="form-group">
                         <label>Precio_Unitario:</label>
-                        <input type="text" class="form-control" name="precio_u" id="idprecio_u" required="1">                  
+                        <input type="text" class="form-control" name="precio_u" id="idprecio_u" required="1">
                     </div>
                     <div class="form-group">
                         <label>Tipo:</label>
-                        <input type="text" class="form-control" name="tipo" id="idtipo" required="1">                  
+                        <input type="text" class="form-control" name="tipo" id="idtipo" required="1">
                     </div>
                     <div class="form-group">
-                        <button id="idBtnOperacion" onclick="$('#idProducto').prop('disabled',false)" type="submit" class="btn btn-primary">Operación</button>
+                        <label>idProveedor:</label>
+                        <input type="text" class="form-control" name="idproveedor" id="idproveedor" required="1">
+                    </div>
+                    <div class="form-group">
+                        <button id="idBtnOperacion" onclick="$('#idProducto').prop('disabled',false)" type="submit"
+                            class="btn btn-primary">Operación</button>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
-        </div>   
+        </div>
     </div>
 </div>
 </tbody>
-    
-
