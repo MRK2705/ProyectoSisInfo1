@@ -44,50 +44,36 @@
 
         </div>
       </div>
-
-      <div class="row g-3 ">
-        <div class="col-10">
-          <!-- <label for="validationTooltip02" class="form-label text-white">ID de compra:</label>
-          <input type="text" class="form-control" id="validationTooltip02" value="" required>
-          <div class="valid-tooltip">
-            Looks good!
-          </div> -->
-          <span class="input-group-addon text-white">
-            Elige uno:
-          </span>
-          <select name="name_platillos" class="selectpicker form-control mt-2">
-            {% for o in data %}
-            <option value="{{ o.id }}">{{o.getResumen()}}</option>
-            {% endfor %}
-          </select>
-        </div>
-        <div class="col-2 position-relative">
-          <label for="validationTooltip02" class="form-label text-white">Cantidad:</label>
-          <input type="number" class="form-control" id="validationTooltip02" value="" required min=1>
-          <div class="valid-tooltip">
-            Looks good!
+      <form action="{{url_for('add_platillo')}}" method='POST' novalidate>
+        <div class="row ">
+          <div class="col-8">
+            <span class="input-group-addon text-white">
+              Elige uno:
+            </span>
+            <select name="name_platillos" class="selectpicker form-control mt-2">
+              {% for o in data %}
+              <option value="{{ o.id }}">{{o.getResumen()}}</option>
+              {% endfor %}
+            </select>
           </div>
-        </div>
-        <!-- <div class="col-md-6 position-relative">
-          <label for="validationTooltip02" class="form-label text-white">Fecha(AAAA-MM-DD):</label>
-          <input type="text" class="form-control" id="validationTooltip02" value="1" required > 
-          <div class="valid-tooltip">
-            Looks good!
+          <div class="col-2 ">
+            <label for="validationTooltip02" class="form-label text-white">Cantidad:</label>
+            <input type="number" class="form-control" id="validationTooltip02" value="" required min=1>
+            <div class="valid-tooltip">
+              Looks good!
+            </div>
           </div>
+          <div class="col-2 ">
+            <label for="validationTooltip02" class="form-label text-success">.</label>
+            <br>
+            <button class="btn btn-warning" type="submit">
+              Añadir
+            </button>
+          </div>--
+
         </div>
-        <div class="col-md-6 position-relative">
-          <label for="validationTooltip02" class="form-label text-white">Total (Bs.):</label>
-          <input type="text" class="form-control" id="validationTooltip02" value="" required>
-          <div class="valid-tooltip">
-            Looks good!
-          </div>
-        </div> -->
+      </form>
 
-      </div>
-
-      <table>
-
-      </table>
 
     </div>
 

@@ -29,65 +29,72 @@
 
 <body style="background-image: url('/static/pizza1.jpg');">
 
-  <div class="position-absolute top-50 start-50 translate-middle">
-    <p style="margin-top: 50px; margin-left: 400px; font-size: 50px; font-family: sans-serif; color: darkgoldenrod;">
-      REGISTRO DE PRODUCTOS</p>
+  <center class="mt-5">
 
-    <div class="container-xxl bg-success" style="border-radius: 25px;">
-      <form class="row g-3 needs-validation" action="{{url_for('add_prod')}}" method='POST' novalidate>
-        <div class="col-md-4 position-relative">
-          <label for="validationServer01" class="form-label">
-            <p class="text-white bg-success">Nombre</p>
-          </label>
-          <input type="text" name="nombre" class="form-control " id="validationServer01" required>
-          <div class="valid-feedback">
-            Looks good!
+    <div class="card bg-success p-4" style="width: 700px;">
+      <p class="text-white h1">
+        Registro de productos</p>
+      <form class="row m-3" action="{{url_for('add_prod')}}" method='POST' novalidate>
+        <div class="row">
+          <div class="col-10">
+            <label for="validationServer01" class="form-label text-white">
+              Nombre
+            </label>
+            <input type="text" name="nombre" class="form-control " id="validationServer01" required>
+          </div>
+          <div class="col-2">
+            <label for="validationServer02" class="form-label text-white">
+              Cantidad(Kg)
+            </label>
+            <input type="number" name="cantidad" class="form-control " id="validationServer02" min=0.5 required>
+
           </div>
         </div>
-        <div class="col-md-4 position-relative">
-          <label for="validationServer02" class="form-label">
-            <p class="text-white bg-success">Cantidad(Kg)</p>
-          </label>
-          <input type="number" name="cantidad" class="form-control " id="validationServer02" required>
-          <div class="valid-feedback">
-            Looks good!
+        <div class="row mt-3">
+          <div class="col-3">
+            <label for="validationServer03" class="form-label text-white">
+              Precio Unitario
+            </label>
+            <input type="number" name="precio_u" class="form-control " id="validationServer03" min=1 required>
+          </div>
+          <div class="col-9">
+            <label for="validationServer04" class="form-label text-white">
+              Tipo
+            </label>
+            <select name="tipo" class="selectpicker form-control ">
+
+              <option value="Ingrediente">Ingrediente</option>
+              <option value="Bebida">Bebida</option>
+
+            </select>
           </div>
         </div>
-        <div class="col-md-6 position-relative">
-          <label for="validationServer03" class="form-label">
-            <p class="text-white bg-success">Precio Unitario</p>
-          </label>
-          <input type="number" name="precio_u" class="form-control " id="validationServer03" required>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-        </div>
-        <div class="col-md-3 position-relative">
-          <label for="validationServer04" class="form-label">
-            <p class="text-white bg-success">Tipo</p>
-          </label>
-          <input type="text" name="tipo" class="form-control " id="validationServer04" required>
-          <div class="valid-feedback">
-            Looks good!
+        <div class="row mt-3">
+          <div class="col">
+            <label for="pro" class="form-label text-white">
+              Proveedor
+            </label>
+            <select name="idproveedor" class="selectpicker form-control ">
+              {% for o in data %}
+              <option value="{{ o.id }}">{{o.getResumen()}}</option>
+              {% endfor %}
+            </select>
           </div>
         </div>
 
-        <select name="idproveedor" class="selectpicker form-control mt-2">
-          {% for o in data %}
-          <option value="{{ o.id }}">{{o.getResumen()}}</option>
-          {% endfor %}
-        </select>
 
-        <div class="col-12">
-          <center>
-            <button type="submit" class="btn btn-danger" style="margin-bottom: 10px;">Agregar</button>
 
-          </center>
+
+        <div class="d-grip mt-4">
+          <button type="submit" class="btn btn-danger">Agregar Producto</button>
         </div>
+
+
+
       </form>
     </div>
 
-  </div>
+  </center>
 
 
 
