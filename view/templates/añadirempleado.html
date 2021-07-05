@@ -32,51 +32,48 @@ integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG
 
 
 <body style="background-image: url('/static/pizza1.jpg');">
-<p style="margin-top: 50px; margin-left: 400px; font-size: 50px; font-family: sans-serif; color: darkgoldenrod;">REGISTRO DE PRODUCTOS</p>
+  
+  <center class="mt-5" >
+    
+    <div class="card bg-success"style="width: 600px">
+      <p class="h1 mt-3 text-white">REGISTRO DE EMPLEADOS</p>
+     <form class="m-5" action="{{url_for('add_emp')}}" method='POST' novalidate>
+       <div class="row ">
 
-<div class="position-absolute top-50 start-50 translate-middle" >
-
-    <div class="container-xxl bg-success"style="border-radius: 25px;">
-     <form class="row g-3 needs-validation" action="{{url_for('add_emp')}}" method='POST' novalidate>
-        <div class="col-md-4 position-relative">
-          <label for="validationServer01" class="form-label"><p class="text-white bg-success">CI:</p></label>
-          <input type="text" name="ci" class="form-control " id="validationServer01"  required>
-          <div class="valid-feedback">
-            Looks good!
+         <div class="col ">
+           <label for="validationServer01" class="form-label"><p class="text-white bg-success">CI:</p></label>
+           <input type="text" name="ci" class="form-control " id="validationServer01"  required>
           </div>
-        </div>
-        <div class="col-md-4 position-relative">
-          <label for="validationServer02" class="form-label"><p class="text-white bg-success">Nombre:</p></label>
-          <input type="text" name="nombre" class="form-control " id="validationServer02"  required>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-        </div>
-        <div class="col-md-6 position-relative" >
-          <label for="validationServer03" class="form-label"><p class="text-white bg-success">Telefono:</p></label>
-          <input type="number" name="fono" class="form-control " id="validationServer03"   required>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-        </div>
-        <div class="col-md-3 position-relative">
-          <label for="validationServer04" class="form-label"><p class="text-white bg-success">Password:</p></label>
-          <input type="password" name="password" class="form-control " id="validationServer04"  required>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-        </div>
-        
-        <div class="col-12">
-          <center>
-            <button type="submit" class="btn btn-danger" style="margin-bottom: 10px;">Agregar</button>
           
+          <div class="col ">
+            <label for="validationServer02" class="form-label"><p class="text-white bg-success">Nombre:</p></label>
+            <input type="text" name="nombre" class="form-control " id="validationServer02"  required>
+          </div>
+          
+        </div>
+        <div class="row mt-3">
+
+          <div class="col" >
+            <label for="validationServer03" class="form-label"><p class="text-white bg-success">Telefono:</p></label>
+            <input type="number" name="fono" class="form-control " id="validationServer03"   required>
+          </div>
+          
+          <div class="col">
+            <label for="validationServer04" class="form-label"><p class="text-white bg-success">Password:</p></label>
+            <input type="password" name="password" class="form-control " id="validationServer04"  required>
+          </div>
+          
+        </div>
+        <div class="col">
+          <center class="mt-3">
+            <button type="submit" class="btn btn-danger btn-lg">Agregar Empleado</button>
+
           </center> 
         </div>
       </form>
     </div>
     
-  </div>
+  </center>
 
 
 

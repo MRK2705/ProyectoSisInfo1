@@ -4,4 +4,6 @@ class Proveedor:
        self.nombre = n
        self.fono = f
     def getResumen(self):
-        return f"{self.idproveedor} - {self.nombre} - {self.fono} "
+        return f"Id: {self.idproveedor} - {self.nombre} - Telefono: {self.fono} "
+    def getId(self):
+        return self.idproveedor

@@ -46,7 +46,7 @@
             <label for="validationServer02" class="form-label text-white">
               Cantidad(Kg)
             </label>
-            <input type="number" name="cantidad" class="form-control " id="validationServer02" min=0.5 required>
+            <input type="number" name="cantidad" class="form-control " id="validationServer02" min=1 required>
 
           </div>
         </div>
@@ -76,7 +76,7 @@
             </label>
             <select name="idproveedor" class="selectpicker form-control ">
               {% for o in data %}
-              <option value="{{ o.id }}">{{o.getResumen()}}</option>
+              <option value="{{ o.getId() }}">{{ o.getResumen()}}</option>
               {% endfor %}
             </select>
           </div>
